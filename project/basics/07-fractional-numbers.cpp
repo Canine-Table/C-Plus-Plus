@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip>
+#include <cmath>
 
 /*
     Floaiting Point Types
@@ -30,6 +32,7 @@
 
 
 int main(int argc, char **argv){
+
     float num1 {3.1415926f};
     double num2 {3.141592653589793};
     double num3 {3.141592653589793e8};
@@ -38,27 +41,33 @@ int main(int argc, char **argv){
     float zero {0.0};
 
     std::cout
+        << "-------------------------------------------\n\n"
+        << std::setprecision(7) // included in <iomanip>
+        << std::fixed
         << num1
-        << std::endl
+        << "\n"
         << num2
-        << std::endl
+        << "\n"
         << num3
-        << std::endl
+        << "\n"
+        << std::endl;
+
+    std::cout
+        << "-------------------------------------------\n\n"
+        << std::setprecision(3)
+        << std::scientific // included in <cmath>
         << num4
-        << std::endl
+        << "\n"
         << num5
-        << std::endl
+        << "\n"
         << num3 * num5
-        << std::endl
+        << "\n"
         << num3 * num5 / num3 / num5
-        << std::endl
+        << "\n"
         << num1 / zero
-        << std::endl
+        << "\n"
         << zero / zero
         << std::endl;
 
-//    std::cout << std::setprecision(2);
-
     return 0;
-
 }
