@@ -1,0 +1,53 @@
+
+
+- All data is represented by a bunch of grouped cells of 0's and 1's in memory
+- As the range of data grows, so will the number of digits you need to represent the data in memory
+- Hexadecimal system makes it a little easier for humans to handle streams of data with 0's and 1's
+- Octal has the same goal as Hexadecimal, but almost no longer used in modern times it's just mentioned here for awareness
+
+
+Decimal (Base-10):
+
+    ex. 2371 = 2 * 10^3 + 3 * 10^2 + 7 * 10^1 + 1 * 10^0
+    ex. 924 = 9 * 10^2 + 2 * 10^1 + 4 * 10^0
+    ex. 47 = 4 * 10^1 + 7 * 10^0
+    Preix: None
+
+
+Binary(Base-2):
+
+    Digits: 1
+    Bytes: 0.125
+    Data Range: 0 ~ 1
+    Preix: '0b '
+
+
+    ex. 1000011 = 1 * 2^6 + 0 * 2^5 + 0 * 2^4 + 0 * 2^3 + 0 * 2^2 + 1 * 2^1 + 1 * 2^0
+            = 64 + 0 + 0 + 0 + 0 + 2 + 1
+            = 67
+
+
+Octal(Base-8):
+
+    Digits: 8
+    Bytes: 1
+    Data Range: 0 ~ 255
+    Preix: '0 '
+
+    ex. 47 = 4 * 8^1 +7 *8^0
+            =4 *8 +7 *1
+            =32 +7
+            =39
+
+
+Hexadecimal(Base-16):
+
+    Digits: 16
+    Bytes: 2
+    Data Range: 0 ~ 65535
+    Preix: '0x '
+
+    ex. 3B = 3 * 16^1 + B * 16^0
+            = 3 * 16 + 11 * 1
+            = 48 + 11
+            = 59
