@@ -1,0 +1,33 @@
+
+Each program is abstracted into a process, and each process has access to the memory range 0 ~ 2^n-1 where N is 32 on 32 bit systems and 64 on 64 bit systems.
+
+Real Memory (Random Access Memory (RAM))
+Virtual Memory (0 ~ 2^n-1)
+Memory Management Unit (MMU)
+
+The entire program is not loaded in real memory by the CPU and MMU. Only parts that are about to be executed are loaded. Making effective use of real memory. a valuable and lacking resource.
+
+The memory map is a standard format defined by the OS. All programs written for that OS must conform to it. It is usually divided into some sections.
+
+Since the memory map is defined by your operating system (OS), this is why you cant just take your windows *.exe file and run it on linux or BSD or MacOS, etc. The memory map is an operating system thing, all programs must conform to that operating systems memory map.
+
+
+System:
+
+Stack:
+    - stores local variables, function calls, etc.
+        ex. int a {5};
+    - the stack memory is finite
+    - The developer is not in full control of the memory lifetime
+    - Lifetime is confrolled by the scope mechanism
+
+Heap:
+    - additional memory that can be queried for at run time comes from the heap
+    - Memory is finite
+    - The developer is in full control of when memory is allocated and when it's released
+    - Lifetime is controlled explicitly through new and delete operators
+
+Data:
+
+Text:
+    - the text part loads the actual binary of the compiled program so the CPU can execute it
