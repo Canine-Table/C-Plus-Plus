@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath>
+#include <iomanip>
 
 int main(int argc, char **argv){
     // \0 is a null termination character
@@ -16,17 +16,27 @@ int main(int argc, char **argv){
     char message4[] {"Hello World!"};
 
     std::cout
-        << "message: "
+        << std::left // left justified
+        << "\n"
+        << std::setw(35)
+        << "Message"
+        << "Bytes"
+        << "\n"
+        << std::setw(35)
         << message1
+        << sizeof(message1)
         << "\n"
-        << "message: "
+        << std::setw(35)
         << message2
+        << sizeof(message2)
         << "\n"
-        << "message: "
+        << std::setw(35)
         << message3
+        << sizeof(message4)
         << "\n"
-        << "message: "
+        << std::setw(35)
         << message4
+        << sizeof(message4)
         << std::endl;
 
     return 0;

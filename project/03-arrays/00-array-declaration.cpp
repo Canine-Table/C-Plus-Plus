@@ -4,18 +4,18 @@
 /*
     Arrays store values of the same type. mixing type will result in a compiler error.
 
-    if you don't initialize all the elements those you leave are will be initialized to 0
+    if you don't initialize all the elements those you leave  will be initialized to 0
 
         int numbers[5] {1,2,3};
-        numbers will hold 1,2,3,0,0
 
+    numbers will hold 1,2,3,0,0
     it it also possible to omit the size of the array at declaration and will deduce the size from the elements in the array
         int numbers[] {1,2,3}; is the same as int numbers[3] {1,2,3};
 
-        doing:
-            int numbers[]; is not valid C++
+        this is not valid C++:
+            int numbers[];
         if you dont declare values for the array you must declare the size
-        doing:
+        this is valid C++:
             int numbers[3]; is valid C++
 
     it is also possible to make your array constant, can't be changed
