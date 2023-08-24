@@ -44,14 +44,46 @@
 
         Assignment:
             ex. int var = 5
-*/
 
-
-/*
     int a {4};
     int b {4};
     Runtime Error
     int c = 10 / (a-b);
+
+    NOTE:
+        Initializations:
+            Copy:
+                This is the simplest form of initialization, which uses the assignment operator = to assign a value to a variable.
+                For example:
+                    int x = 10;
+                    std::string s = "Hello";
+                This works by creating a temporary object of the same type as the variable, and then copying its value to the variable.
+                This can be inefficient for some types, such as classes or arrays, that have expensive copy operations.
+                Copy initialization also requires that the type of the value is compatible with the type of the variable, or that there is a conversion constructor that can convert the value to the type of the variable.
+                For example, you cannot use copy initialization to initialize an array with a list of values, or to initialize a class with multiple arguments.
+
+            Direct:
+                This is a more general form of initialization, which uses parentheses () to enclose the value or values to initialize a variable.
+                For example:
+                    int x(10);
+                    std::string s("Hello");
+                This works by calling the constructor of the type of the variable with the value or values as arguments.
+                This can be more efficient for some types, such as classes or arrays, that have move operations or initializer-list constructors.
+                Direct initialization also allows more flexibility in the type of the value or values, as long as there is a matching constructor that can accept them.
+                For example, you can use direct initialization to initialize an array with a list of values, or to initialize a class with multiple arguments.
+
+            Uniform:
+                This is a newer form of initialization, introduced in C++11, which uses braces {} to enclose the value or values to initialize a variable.
+                For example:
+                    int x{10};
+                    std::string s{"Hello"};
+                Uniform initialization works similarly to direct initialization, by calling the constructor of the type of the variable with the value or values as arguments. However, uniform initialization has some advantages over direct initialization, such as:
+                    - It can prevent narrowing conversions, which are implicit conversions that may lose information or precision.
+                      For example, you cannot use uniform initialization to initialize an int variable with a double value, or a char variable with an int value.
+                    - It can be used for any type of variable, including arrays, classes, enums, and aggregates (structures or unions).
+                      For example, you can use uniform initialization to initialize an array with a list of values, or to initialize a class with multiple arguments.
+                    - It can be used for default initialization, which means giving a default value to a variable when no value is specified.
+                     For example, you can use uniform initialization to initialize an int variable with zero, or a string variable with an empty string.
 */
 
 int main(int argc, char **argv){

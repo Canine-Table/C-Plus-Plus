@@ -34,6 +34,7 @@ int main(int argc, char **argv){
 
     std::cout
         << std::left
+        << std::setfill('-')
         << "\n"
         << std::setw(10)
         << "age"
