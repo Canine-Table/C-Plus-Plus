@@ -1,5 +1,3 @@
-#ifndef OUTPUT_UTILS_H
-#define OUTPUT_UTILS_H
 #include <iostream>
 #include <cstring>
 #include <iomanip>
@@ -134,6 +132,3 @@ string vector_to_string (vector<string> value,char divider = {32}) {
 
     return (convert_to_string);
 }
-
-
-# endif

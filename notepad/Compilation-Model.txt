@@ -1,0 +1,14 @@
+Functions across Multiple Files:
+
+Source Files    ->  Processing:
+                        - #include replaced with the actual content of the included files
+
+                        Translation Units  ->   Compilation:
+
+                                                    Object  ->  Linking:
+                                                                    - The linker searches for definitions in all translation units (.cpp) files in the project.
+                                                                    - Does not have to live in a *.cpp file with the same name as the header
+
+
+                                                        - Each object is a binary representation of it's translation unit.
+                                                        - One object file per translation unit

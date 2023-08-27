@@ -1,4 +1,4 @@
-#include "__output-utils.h"
+#include "output-utils.hpp"
 #include <iostream>
 #include <cstring>
 #include <iomanip>
@@ -6,6 +6,24 @@
 #include <string>
 #include <vector>
 
+/*
+    These are declarations also known as prototypes.
+    You can declare as many times as you like but you can define only once.
+    The prototype needs to come BEFORE the function call in your file.
+    Otherwise the compilation will fail.
+
+    One Definition Rule (OSR):
+        The same function implementation can;t show up in the global nameplace more than once
+
+
+    The full function definition coming in front of main() also doubles as a prototype(declaration).
+    That's why the code in the last script worked without any issue
+
+    NOTE:
+        Signatures do not contain the return type
+
+
+*/
 std::string add_margin (std::string output_string, size_t top_margin, size_t bottom_margin, char control_character);
 std::string vector_to_string (std::vector<std::string> value,char divider);
 std::string add_divider (size_t count, char symbol);
