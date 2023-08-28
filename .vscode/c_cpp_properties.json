@@ -3,8 +3,7 @@
         {
             "name": "linux-gcc-x64",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/**/*"
+                "${workspaceFolder}/**"
             ],
             "compilerPath": "/usr/bin/g++",
             "cStandard": "c23",

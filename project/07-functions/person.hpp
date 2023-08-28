@@ -1,31 +1,12 @@
-#ifndef PERSON_H
-#define PERSON_H
-#include <iostream>
+#ifndef PERSON_HPP
+#define PERSON_HPP
 #include <string>
-#include <iomanip>
+#include "person.cpp"
 
-class Person {
-
-    public :
-        Person(const std::string& names_param, int age_param);
-
-    void print_info() const {
-        std::cout
-            << "name: "
-            << full_name
-            << "\n"
-            << "age: "
-            << age
-            << std::endl;
-    }
-
-    private :
-        std::string full_name {};
-        int age {};
-
-    public :
-        // Static variable declaration
-        static int person_count;
+int Person::person_count = 8;
+Person::Person(const std::string& names_param, int age_param)
+    : full_name(names_param), age(age_param){
+        ++person_count;
 };
 
 #endif
