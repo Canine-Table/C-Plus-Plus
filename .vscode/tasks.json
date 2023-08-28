@@ -11,6 +11,7 @@
 				"-std=c++23",
 				"${file}",
 				"${workspaceFolder}/headers/common-output-utils.cpp",
+				"${workspaceFolder}/headers/common-template-utils.cpp",
 				"-o",
 				"${workspaceFolder}/build/${fileBasenameNoExtension}"
 			],

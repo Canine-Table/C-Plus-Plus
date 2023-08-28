@@ -5,119 +5,50 @@
 #include <string>
 #include <vector>
 
-namespace cmout {
+namespace cmtemp {
 
-    using namespace std;
 
-    string add_divider (size_t count=75, char symbol='-'){
-        string spliter (count, symbol);
+    std::string add_divider (size_t count=75, char symbol='-') {
+        std::string spliter (count, symbol);
         return spliter;
     }
 
 
-    string add_margin (string output_string, size_t top_margin=1, size_t bottom_margin=1, char control_character='\n') {
+    std::string add_margin (std::string output_string, size_t top_margin=1, size_t bottom_margin=1, char control_character='\n') {
         control_character = iscntrl(control_character) ? control_character : '\n';
-        return add_divider(top_margin,control_character) + output_string + add_divider(bottom_margin,control_character);
+        return add_divider(
+            top_margin,control_character) + output_string + add_divider(bottom_margin,control_character);
     }
 
-    void overloaded_output(auto value){
 
-        string get_type {};
-        switch (sizeof(value)) {
-            case 1:
-                get_type = "char";
-                break;
-            case 2:
-                get_type = "short";
-                break;
-            case 4:
-                get_type = "int";
-                break;
-            case 8:
-                get_type = "double";
-                break;
-            default:
-                get_type = "string";
-        }
-
+    void display (std::string value) {
         std::cout
-            << add_margin(add_divider())
-            << "\n Type: "
-            << get_type
-            << "\n Size: "
-            << sizeof(value)
-            << "\n Memory Location: "
-            << &value
-            << "\n Value: "
             << value
-            << add_margin(add_divider(),2,1)
-            << flush;
+            << std::flush;
         return;
     }
 
-    void output (string value) {
-        cout
-            << value
-            << flush;
-        return;
+    void display_template_one (std::string value_one) {
+        display(
+            add_margin(add_divider())+
+            add_margin(value_one)+
+            add_margin(add_divider(),1,2)
+        );
     }
 
-/*
-    template <typename T> void output (string value_one, T value_two) {
-        cout
-            << value_one
-            << flush;
-        overloaded_output(value_two);
-        return;
-    }
-*/
-    void output (string value_one, double value_two) {
-        cout
-            << value_one
-            << flush;
-        overloaded_output(value_two);
-        return;
+    void display_template_two (std::string value_one) {
+        display(
+            add_margin(value_one,0)+
+            add_margin(add_divider(),1,2)
+        );
     }
 
-    void output (string value_one, int value_two) {
-        cout
-            << value_one
-            << flush;
-        overloaded_output(value_two);
-        return;
-    }
-
-    void output (string value_one, string value_two) {
-        cout
-            << value_one
-            << flush;
-        overloaded_output(value_two);
-        return;
-    }
-
-    void output (string value_one, bool value_two) {
-        cout
-            << value_one
-            << flush;
-        overloaded_output(value_two);
-        return;
-    }
-
-    void output (string value_one, char value_two) {
-        cout
-            << value_one
-            << flush;
-        overloaded_output(value_two);
-        return;
-    }
-
-
-    string character_counter (string value="") {
+    std::string character_counter (std::string value="") {
 
         if (value == ""){
-            cin >> value;
+            std::cin >> value;
         } else {
-            string value {value};
+            std::string value {value};
         }
 
         size_t total {};
@@ -176,35 +107,34 @@ namespace cmout {
 
             return (
             add_margin(add_divider(100))+
-            add_margin("Printable Characters: "+to_string(printable))+
-            add_margin("\tSpace Characters: "+to_string(space))+
-            add_margin("\t\tBlank Characters: "+to_string(blank))+
-            add_margin("\tGraphable Characters: "+to_string(graphable))+
-            add_margin("\t\tAlpha Numeric Characters: "+to_string(alpha_numeric))+
-            add_margin("\t\t\tHexdecimal Characters: "+to_string(hexdecimal))+
-            add_margin("\t\t\t\tDigit Characters: "+to_string(digit))+
-            add_margin("\t\t\tAlphabetic Characters: "+to_string(alphabetic))+
-            add_margin("\t\t\t\tUppercase Characters: "+to_string(uppercase))+
-            add_margin("\t\t\t\tLowercase Characters: "+to_string(lowercase))+
-            add_margin("\t\t\tPunctuation Characters: "+to_string(punctuation))+
-            add_margin("Control Characters: "+to_string(control_character))+
+            add_margin("Printable Characters: "+std::to_string(printable))+
+            add_margin("\tSpace Characters: "+std::to_string(space))+
+            add_margin("\t\tBlank Characters: "+std::to_string(blank))+
+            add_margin("\tGraphable Characters: "+std::to_string(graphable))+
+            add_margin("\t\tAlpha Numeric Characters: "+std::to_string(alpha_numeric))+
+            add_margin("\t\t\tHexdecimal Characters: "+std::to_string(hexdecimal))+
+            add_margin("\t\t\t\tDigit Characters: "+std::to_string(digit))+
+            add_margin("\t\t\tAlphabetic Characters: "+std::to_string(alphabetic))+
+            add_margin("\t\t\t\tUppercase Characters: "+std::to_string(uppercase))+
+            add_margin("\t\t\t\tLowercase Characters: "+std::to_string(lowercase))+
+            add_margin("\t\t\tPunctuation Characters: "+std::to_string(punctuation))+
+            add_margin("Control Characters: "+std::to_string(control_character))+
             add_margin(add_divider(100))+
-            add_margin("Total Characters: "+to_string(total))+
+            add_margin("Total Characters: "+std::to_string(total))+
             add_margin(add_divider(100))
         );
     }
 
-
-    string vector_to_string (vector<string> value,char divider = {32}) {
-        if (!isprint(divider)){
+    std::string vector_to_string (std::vector<std::string> value,char divider = {32}) {
+        if (!std::isprint(divider)){
             divider = {44};
         }
 
-        string convert_to_string {};
+        std::string convert_to_string {};
         bool first = true;
 
         for (size_t i{}; i < size(value); i++) {
-            string div (1,divider);
+            std::string div (1,divider);
             if (first){
                 first = false;
                 div = (1,'\0');
@@ -216,4 +146,4 @@ namespace cmout {
         return (convert_to_string);
     }
 
-}
+} // namespace cmtplte

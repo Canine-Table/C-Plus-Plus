@@ -1,4 +1,5 @@
 - Wandbox
 - Compiler Explorer
 - Coliru
+- cppinsights.io
 - ...
