@@ -20,6 +20,41 @@ namespace cmout {
         return add_divider(top_margin,control_character) + output_string + add_divider(bottom_margin,control_character);
     }
 
+    void overloaded_output(auto value){
+
+        string get_type {};
+        switch (sizeof(value)) {
+            case 1:
+                get_type = "char";
+                break;
+            case 2:
+                get_type = "short";
+                break;
+            case 4:
+                get_type = "int";
+                break;
+            case 8:
+                get_type = "double";
+                break;
+            default:
+                get_type = "string";
+        }
+
+        std::cout
+            << add_margin(add_divider())
+            << "\n Type: "
+            << get_type
+            << "\n Size: "
+            << sizeof(value)
+            << "\n Memory Location: "
+            << &value
+            << "\n Value: "
+            << value
+            << add_margin(add_divider(),2,1)
+            << flush;
+        return;
+    }
+
     void output (string value) {
         cout
             << value
@@ -27,6 +62,53 @@ namespace cmout {
         return;
     }
 
+    void output (string value_one, int value_two) {
+        cout
+            << value_one
+            << flush;
+        overloaded_output(value_two);
+        return;
+    }
+
+    void output (string value_one, double value_two) {
+        cout
+            << value_one
+            << flush;
+        overloaded_output(value_two);
+        return;
+    }
+
+    void output (string value_one, string value_two) {
+        cout
+            << value_one
+            << flush;
+        overloaded_output(value_two);
+        return;
+    }
+
+    void output (string value_one, bool value_two) {
+        cout
+            << value_one
+            << flush;
+        overloaded_output(value_two);
+        return;
+    }
+
+    void output (string value_one, char value_two) {
+        cout
+            << value_one
+            << flush;
+        overloaded_output(value_two);
+        return;
+    }
+
+    void output (string value_one, string_view value_two) {
+        cout
+            << value_one
+            << flush;
+        overloaded_output(value_two);
+        return;
+    }
 
     string character_counter (string value="") {
 
