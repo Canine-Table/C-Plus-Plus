@@ -4,7 +4,7 @@
 		{
 			"type": "shell",
 			"label": "Build with GCC 11.4.0 using a Bash for dynamic headers arguments",
-			"command": "${workspaceFolder}/.vscode/compile.sh",
+			"command": "${workspaceFolder}/compile.sh",
 			"args": [
 				"${file}",
 				"${workspaceFolder}",

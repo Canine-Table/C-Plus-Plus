@@ -1,9 +1,5 @@
 #/bin/bash
 
-# echo -e "\nthe project folder is: ${BASENAMES[file]}";
-# echo -e "\nthe project folder is: ${BASENAMES[workspaceFolder]}";
-# echo -e "\nthe project folder is: ${BASENAMES[fileDirname]}";
-# echo -e "\nthe project folder is: ${BASENAMES[projectFolder]}";
 
 function 07_functions(){
     declare -ga compile_file_args=(
@@ -20,6 +16,7 @@ function 07_functions(){
     return 0;
 }
 
+
 function 08_function_templates(){
     declare -gar compile_file_args=(
         "${LINKER_FILES[commonOutputUtils]}"
@@ -28,6 +25,7 @@ function 08_function_templates(){
 
     return 0;
 }
+
 
 function 10_classes(){
     declare -gar compile_file_args=(
@@ -45,6 +43,7 @@ function get_basename(){
     return 0;
 }
 
+
 function choose_files_to_compile(){
 
     local -Ar BASENAMES=(
@@ -59,7 +58,7 @@ function choose_files_to_compile(){
         ["commonTemplateUtils"]=$(echo "${FILE_PATHS[workspaceFolder]}/headers/common-template-utils.cpp")
         ["person"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/07-functions/person.cpp")
         ["compare"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/07-functions/03-linker/compare.cpp")
-        ["dog"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/cylinder.cpp")
+        ["dog"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/dog.cpp")
         ["cylinder"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/cylinder.cpp")
     );
 
@@ -93,5 +92,6 @@ function main(){
     /usr/bin/g++ -fdiagnostics-color=always -g -std=c++23 "${FILE_PATHS[file]}" "${compile_file_args[@]}" -o "${FILE_PATHS[buildPath]}";
     exit 0;
 }
+
 
 main "$@";
