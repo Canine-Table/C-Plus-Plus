@@ -42,9 +42,9 @@ Divisible auto divide (Divisible auto a, Divisible auto b) -> decltype(a / b);
 int main(int argc, char **argv){
 
     {
-        int char_one {10};
-        int char_two {2};
-        cmtemp::display_template_one(std::to_string(char_one)+" / "+std::to_string(char_two)+ " = "+std::to_string(divide(char_one,char_two)));
+        int int_one {10};
+        int int_two {2};
+        cmtemp::display_template_one(std::to_string(int_one)+" / "+std::to_string(int_two)+ " = "+std::to_string(divide(int_one,int_two)));
     }
 
     return 0;

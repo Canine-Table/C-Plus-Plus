@@ -16,7 +16,6 @@
         void output (std::string value_one, bool value_two);
         void output (std::string value_one, std::string_view value_two);
         void output (std::string value_one, char value_two);
-//        template <typename T> void output (std::string value_one, T value_two);
         void overloaded_output(auto value);
     }
 

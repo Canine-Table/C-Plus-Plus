@@ -1,12 +1,20 @@
+#include <string>
+
 #ifndef PERSON_HPP
 #define PERSON_HPP
-#include <string>
-#include "person.cpp"
 
-int Person::person_count = 8;
-Person::Person(const std::string& names_param, int age_param)
-    : full_name(names_param), age(age_param){
-        ++person_count;
+class Person {
+
+    public :
+        static int person_count;
+
+    private :
+        std::string full_name {};
+        int age {};
+
+    public :
+        Person(const std::string& names_param, int age_param);
+        void print_info() const;
 };
 
 #endif

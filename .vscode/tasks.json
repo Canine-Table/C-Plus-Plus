@@ -2,17 +2,13 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "cppbuild",
-			"label": "Build with GCC 11.4.0",
-			"command": "/usr/bin/g++",
+			"type": "shell",
+			"label": "Build with GCC 11.4.0 using a Bash for dynamic headers arguments",
+			"command": "${workspaceFolder}/.vscode/compile.sh",
 			"args": [
-				"-fdiagnostics-color=always",
-				"-g",
-				"-std=c++23",
 				"${file}",
-				"${workspaceFolder}/headers/common-output-utils.cpp",
-				"${workspaceFolder}/headers/common-template-utils.cpp",
-				"-o",
+				"${workspaceFolder}",
+				"${fileDirname}",
 				"${workspaceFolder}/build/${fileBasenameNoExtension}"
 			],
 			"options": {
@@ -29,6 +25,33 @@
 		},
 		{
 			"type": "cppbuild",
+			"label": "Build with GCC 11.4.0",
+			"command": "/usr/bin/g++",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"-std=c++23",
+				"${file}",
+				"${workspaceFolder}/headers/common-output-utils.cpp",
+				"${workspaceFolder}/headers/common-template-utils.cpp",
+				"${workspaceFolder}/project/10-classes/03-modular/cylinder.cpp",
+				"${workspaceFolder}/project/10-classes/03-modular/dog.cpp",
+				"${workspaceFolder}/project/07-functions/03-linker/compare.cpp",
+				"${workspaceFolder}/project/07-functions/person.cpp",
+				"-o",
+				"${workspaceFolder}/build/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: /usr/bin/g++"
+		},
+		{
+			"type": "cppbuild",
 			"label": "Build with clang 14.0.0",
 			"command": "/usr/bin/clang++-14",
 			"args": [
@@ -37,6 +60,12 @@
 				"-g",
 				"-std=c++23",
 				"${file}",
+				"${workspaceFolder}/headers/common-output-utils.cpp",
+				"${workspaceFolder}/headers/common-template-utils.cpp",
+				"${workspaceFolder}/project/10-classes/03-modular/cylinder.cpp",
+				"${workspaceFolder}/project/10-classes/03-modular/dog.cpp",
+				"${workspaceFolder}/project/07-functions/03-linker/compare.cpp",
+				"${workspaceFolder}/project/07-functions/person.cpp",
 				"-o",
 				"${workspaceFolder}/build/${fileBasenameNoExtension}"
 			],
