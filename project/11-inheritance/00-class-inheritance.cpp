@@ -20,17 +20,17 @@ int main(int argc, char **argv){
         std::cout << people2 << std::endl;
     }
 
-    {
-        Player player1("Blue","Tennis");
-        Player player2("Red","Tennis");
+    // {
+    //     Player player1("Blue","Tennis");
+    //     Player player2("Red","Tennis");
 
-        player1.set_age(27).set_first_name("David").set_last_name("Jones").set_gender('M').get_info();
-        std::cout << player1 << std::endl;
+    //     player1.set_age(27).set_first_name("David").set_last_name("Jones").set_gender('M').get_info();
+    //     std::cout << player1 << std::endl;
 
-        player2.set_age(25).set_first_name("Kevin").set_last_name("Lee").set_gender('M').get_info();
+    //     player2.set_age(25).set_first_name("Kevin").set_last_name("Lee").set_gender('M').get_info();
 
-        std::cout << player2 << std::endl;
-    }
+    //     std::cout << player2 << std::endl;
+    // }
 
     return 0;
 }

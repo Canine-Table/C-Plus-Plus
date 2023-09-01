@@ -1,23 +1,30 @@
 #include "people.hpp"
 
-
 People::People(std::string_view first_name, std::string_view last_name){
     this->m_first_name = first_name;
     this->m_last_name = last_name;
 }
 
-People::People(std::string_view first_name, std::string_view last_name, int age){
+People::People(std::string_view first_name, std::string_view last_name, Age auto age){
+
+    static_assert(age <= 135,"Please enter your real age.");
+    static_assert(age >= 18,"You must be 18 years or older to participate.");
+
     this->m_first_name = first_name;
     this->m_last_name = last_name;
     this->m_age = age;
 }
 
-People::People(std::string_view first_name, std::string_view last_name, int age, char gender){
+People::People(std::string_view first_name, std::string_view last_name, Age auto age, Gender auto gender){
+    static_assert(age <= 135,"Please enter your real age.");
+    static_assert(age >= 18,"You must be 18 years or older to participate.");
+
     this->m_first_name = first_name;
     this->m_last_name = last_name;
-    this->m_gender = gender;
+    this->m_gender = std::toupper(gender);
     this->m_age = age;
 }
+
 
 std::ostream& operator<<(std::ostream& out, const People& People){
     out << "People: [ First name: "
@@ -49,7 +56,7 @@ char People::get_gender(){
     return static_cast<char>(this->m_gender);
 }
 
-int People::get_age(){
+Age auto People::get_age(){
     return this->m_age;
 }
 
@@ -62,12 +69,14 @@ People People::set_last_name(std::string_view last_name){
     return *this;
 }
 
-People People::set_gender(char gender){
-    this->m_gender = gender;
+People People::set_gender(Gender auto gender){
+    this->m_gender = std::toupper(gender);
     return *this;
 }
 
-People People::set_age(int age){
+People People::set_age(Age auto age){
+    static_assert(age <= 135,"Please enter your real age.");
+    static_assert(age >= 18,"You must be 18 years or older to participate.");
     this->m_age = age;
     return *this;
 }
