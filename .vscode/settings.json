@@ -106,5 +106,9 @@
     "sstream": "cpp",
     "cstring": "cpp"
   },
-  "C_Cpp.intelliSenseEngineFallback": "disabled"
+  "C_Cpp.intelliSenseEngineFallback": "disabled",
+  "java.project.sourcePaths": [
+    "project/10-classes/03-modular"
+  ],
+  "C_Cpp.errorSquiggles": "enabled"
 }

@@ -21,7 +21,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: /usr/bin/g++"
+			"detail": "compiler: /bin/bash"
 		},
 		{
 			"type": "cppbuild",
@@ -32,12 +32,7 @@
 				"-g",
 				"-std=c++23",
 				"${file}",
-				"${workspaceFolder}/headers/common-output-utils.cpp",
 				"${workspaceFolder}/headers/common-template-utils.cpp",
-				"${workspaceFolder}/project/10-classes/03-modular/cylinder.cpp",
-				"${workspaceFolder}/project/10-classes/03-modular/dog.cpp",
-				"${workspaceFolder}/project/07-functions/03-linker/compare.cpp",
-				"${workspaceFolder}/project/07-functions/person.cpp",
 				"-o",
 				"${workspaceFolder}/build/${fileBasenameNoExtension}"
 			],

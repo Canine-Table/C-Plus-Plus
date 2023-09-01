@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/mnt/sudoers/table/Documents/Programming/CPP",
-      "program": "/mnt/sudoers/table/Documents/Programming/CPP/build/Debug/outDebug",
+      "program": "/mnt/sudoers/table/Documents/Programming/CPP/build/",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

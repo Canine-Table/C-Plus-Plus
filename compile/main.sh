@@ -15,7 +15,11 @@ function choose_files_to_compile(){
         ["person"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/07-functions/person.cpp")
         ["compare"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/07-functions/03-linker/compare.cpp")
         ["dog"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/dog.cpp")
+        ["wrapper"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/wrapper.cpp")
+        ["point"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/point.cpp")
         ["cylinder"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/cylinder.cpp")
+        ["people"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/11-inheritance/objects-and-definitions/people.cpp")
+        ["player"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/11-inheritance/objects-and-definitions/player.cpp")
     );
 
     case "${BASENAMES[projectFolder]}" in
@@ -28,10 +32,15 @@ function choose_files_to_compile(){
         "10-classes")
             source "${FILE_PATHS[workspaceFolder]}/compile/10-classes.sh"
             10_classes;;
+        "11-inheritance")
+            source "${FILE_PATHS[workspaceFolder]}/compile/11-inheritance.sh"
+            11_inheritance;;
         *)
+            source "${FILE_PATHS[workspaceFolder]}/compile/utils.sh";
             declare -gar compile_file_args=(
                 "${LINKER_FILES[commonTemplateUtils]}"
-            );;
+            );
+            pretty_printing "${compile_file_args[@]}";;
     esac
 
     return 0;
