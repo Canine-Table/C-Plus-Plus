@@ -3,8 +3,8 @@
 	"tasks": [
 		{
 			"type": "shell",
-			"label": "Build with GCC 11.4.0 using a Bash for dynamic headers arguments",
-			"command": "${workspaceFolder}/compile.sh",
+			"label": "Build with GCC 11.4.0 using Bash for dynamic headers arguments",
+			"command": "${workspaceFolder}/compile/main.sh",
 			"args": [
 				"${file}",
 				"${workspaceFolder}",

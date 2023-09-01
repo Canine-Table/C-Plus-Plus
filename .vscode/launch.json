@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "${fileDirname}",
-      "program": "${workspaceFolder}/build/${fileBasenameNoExtension}",
+      "cwd": "/mnt/sudoers/table/Documents/Programming/CPP",
+      "program": "/mnt/sudoers/table/Documents/Programming/CPP/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

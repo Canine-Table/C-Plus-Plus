@@ -28,11 +28,15 @@
 */
 
 
-template <typename T, size_t N> class array;
 template <typename T> T max(T x, T y);
 
 
 int main(int argc, char **argv){
+
+    {
+        cmtemp::display_template_two("Max: "+std::to_string(max(3,5)));
+    }
+
     return 0;
 }
 
@@ -42,23 +46,3 @@ template <typename T> T max(T x, T y) {
     static_assert(!std::is_pointer<T>::value,"max() does not accept pointer types");
     return x > y ? x : y;
 }
-
-// A class template that represents a fixed-size array
-template <typename T, size_t N> class array {
-    // Use a static assert to check that N is positive
-    static_assert(N > 0,"array size must be positive");
-    // Use an array of std::remove_const<T>::type as the underlying storage
-    // This allows const arrays to store non-const elements
-    using value_type = std::remove_const<T>::type;
-    value_type data[N];
-    public:
-        // Use std::is_const<T>::value to determine whether to return a const reference or not
-        using reference = typename std::conditional<std::is_const<T>::value,const value_type&,value_type&>::type;
-    // A subscript operator that returns a reference to an element
-    reference operator
-    {
-        // Use a static assert to check that i is within bounds
-        static_assert(i < N,"array index out of bounds");
-        return data[i];
-    }
-};

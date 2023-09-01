@@ -1,55 +1,11 @@
 #/bin/bash
 
-
-function 07_functions(){
-    declare -ga compile_file_args=(
-        "${LINKER_FILES[commonOutputUtils]}"
-    );
-
-    case "${BASENAMES[fileDirname]}" in
-        "07-functions")
-            compile_file_args+=("${LINKER_FILES[person]}");;
-        "03-linker")
-            compile_file_args+=("${LINKER_FILES[compare]}");;
-    esac
-
-    return 0;
-}
-
-
-function 08_function_templates(){
-    declare -gar compile_file_args=(
-        "${LINKER_FILES[commonOutputUtils]}"
-        "${LINKER_FILES[commonTemplateUtils]}"
-    );
-
-    return 0;
-}
-
-
-function 10_classes(){
-    declare -gar compile_file_args=(
-        "${LINKER_FILES[commonTemplateUtils]}"
-        "${LINKER_FILES[dog]}"
-        "${LINKER_FILES[cylinder]}"
-    );
-
-    return 0;
-}
-
-
-function get_basename(){
-    echo "$(awk -F'/' '{print $NF}' <<< $1)";
-    return 0;
-}
-
-
 function choose_files_to_compile(){
 
     local -Ar BASENAMES=(
-        ["file"]="$(get_basename ${FILE_PATHS[file]})"
-        ["workspaceFolder"]="$(get_basename ${FILE_PATHS[workspaceFolder]})"
-        ["fileDirname"]="$(get_basename ${FILE_PATHS[fileDirname]})"
+        ["file"]="$(basename ${FILE_PATHS[file]})"
+        ["workspaceFolder"]="$(basename ${FILE_PATHS[workspaceFolder]})"
+        ["fileDirname"]="$(basename ${FILE_PATHS[fileDirname]})"
         ["projectFolder"]="$(sed "s|${FILE_PATHS[workspaceFolder]}/project/||g" <<< ${FILE_PATHS[fileDirname]} | awk -F'/' '{print $1}')"
     );
 
@@ -63,12 +19,14 @@ function choose_files_to_compile(){
     );
 
     case "${BASENAMES[projectFolder]}" in
-
         "07-functions")
+            source "${FILE_PATHS[workspaceFolder]}/compile/07-functions.sh"
             07_functions;;
         "08-function-templates")
+            source "${FILE_PATHS[workspaceFolder]}/compile/08-function-templates.sh"
             08_function_templates;;
         "10-classes")
+            source "${FILE_PATHS[workspaceFolder]}/compile/10-classes.sh"
             10_classes;;
         *)
             declare -gar compile_file_args=(
