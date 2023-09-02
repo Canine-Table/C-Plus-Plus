@@ -3,7 +3,7 @@
 #ifndef PLAYER_CPP
 #define PLAYER_CPP
 
-class People; // Forward declaration
+//class People; // Forward declaration
 
 class Player : public People {
 

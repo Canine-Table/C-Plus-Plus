@@ -12,12 +12,14 @@
 int main(int argc, char **argv){
 
     {
-        People people1;
-        people1.set_age(35).set_first_name("Jane").set_last_name("Doe").set_gender('M').get_info();
+        People people1("John","Doe");
+//        people1.set_age(35).set_first_name("Jane").set_last_name("Doe").set_gender('M').get_info();
         std::cout << people1 << std::endl;
 
-        People people2 {"John","Doe",22,'M'};
+        People people2;
         std::cout << people2 << std::endl;
+
+        People people3("Jane","Doe",43,'M');
     }
 
     // {
