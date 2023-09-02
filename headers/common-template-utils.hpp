@@ -41,6 +41,7 @@
             }
 
             std::cout
+                << std::boolalpha
                 << "\n"
                 << value_one
                 << add_margin(add_divider())

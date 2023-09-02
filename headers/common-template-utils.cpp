@@ -23,6 +23,7 @@ namespace cmtemp {
 
     void display (std::string value) {
         std::cout
+            << std::boolalpha
             << value
             << std::flush;
         return;
