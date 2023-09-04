@@ -11,6 +11,15 @@
 #include <array>
 #include <iostream>
 
+#include "headers/array.hpp"
+#include "headers/carray.hpp"
+#include "headers/get_type_id.hpp"
+#include "headers/iterate.hpp"
+#include "headers/pack.hpp"
+#include "headers/packs.hpp"
+#include "headers/printColl.hpp"
+#include "headers/stack.hpp"
+
 /*
     Templates:
         Generic code for arbitrary types/values:
@@ -101,29 +110,14 @@ template <typename T1, typename T2> concept SupportsLessThans = requires(T1 a, T
 
 template <typename T1, typename T2> requires std::copyable<T1> && std::copyable<T2> && SupportsLessThans<T1,T2> auto min_value(T1 a, T2 b) -> decltype(b > a ? a : b);
 
+
 /*
     Class Templates
 
     Class code for arbitrary types
 */
 
-template <typename elemT> class Stack {
-
-    private:
-
-        std::vector<elemT> elems; // elements
-
-    public:
-        Stack() = default; // constructor
-
-        Stack push(const elemT &e); // push element
-        Stack print() const;
-        elemT pop(); // Pop top element
-        elemT top() const; // Yield top element
-
-        bool empty() const; // No elements?
-
-};
+template <typename elemT> class Stack;
 
 /*
     Generic Member functions are only instantiated if used
@@ -165,15 +159,7 @@ template <typename ElemT, typename Allocator=allocator<T>> class Vector {
     Tempified Aggregate
 */
 
-template <typename T, size_t SZ> struct Array {
-    T elems[SZ];
-    size_t size() const;
-    T &operator[] (size_t idx);
-    const T &operator[] (size_t idx) const;
-    typedef T *iterator;
-    T *begin();
-    T *end();
-};
+template <typename T, size_t SZ> struct Array;
 
 /*
     Supported types:
@@ -192,9 +178,7 @@ template <typename T, size_t SZ> struct Array {
         - Lambdas
 */
 
-struct CArray {
-    int elems[10];
-};
+struct CArray;
 
 /*
     Templates for a variable number of template arguments
@@ -206,8 +190,9 @@ struct CArray {
         - can be passed together to somewhere else
 */
 
+void Packs();
 
-void Packs(){};
+template <typename T, typename... Types> void Packs(T firstArg, Types... args);
 
 /*
     Varisdic Templates
@@ -333,16 +318,16 @@ int main(int argc, char **argv){
 
         char16_t c16;
         char32_t c32;
-        char8_t f;
+        char8_t c8;
         u_char uc;
         caddr_t cadd;
-        unsigned long *lli;
-        signed long b;
-        long long sh;
-        const double ldu {4.4};
-        signed short int si;
+        unsigned long *p_ul;
+        signed long sl;
+        long long ll;
+        const double cd {4.4};
+        signed short int ssi;
 
-        get_type_id(f,c32,c16,uc,cadd,ldu,si);
+        get_type_id(c8,c16,c32,uc,cadd,p_ul,sl,ll,cd,ssi);
     }
 
     return 0;
@@ -356,96 +341,12 @@ template <class T> T min_value(T a, T b){
     return b > a ? a : b;
 }
 
-template <typename T> void iterate(const T &iter){
-    for (const auto &elem : iter) {
-        cmtemp::display("",elem);
-    }
-}
-
-void printColl(const auto &iter){
-    for (const auto &elem : iter) {
-        cmtemp::display("",elem);
-    }
-}
-
 template <typename T> requires std::copyable<T> && SupportsLessThan<T> T max_value_concepts(T a, T b){
     return max_value(a,b);
 }
 
 template <typename T1, typename T2> requires std::copyable<T1> && std::copyable<T2> && SupportsLessThans<T1,T2> auto min_value(T1 a, T2 b) -> decltype(b > a ? a : b){
     return b > a ? a : b;
-}
-
-template <typename elemT> Stack<elemT> Stack<elemT>::push(const elemT &e){
-    elems.push_back(e); // insert e at the end of the stack
-    return *this;
-}
-
-template <typename elemT> Stack<elemT> Stack<elemT>::print() const {
-    size_t i {};
-    for (const elemT &elem : elems) {
-        i++;
-        cmtemp::display(std::to_string(i)+") "+std::to_string(elem)+"\n");
-    }
-    cmtemp::display(cmtemp::add_margin(cmtemp::add_divider(),1,2));
-    return *this;
-}
-
-template <typename elemT> elemT Stack<elemT>::pop(){
-    assert(!elems.empty());
-    elemT elem = elems.back(); // copy last element
-    elems.pop_back(); // remove last element
-    return elem; // return copy of removed element
-}
-
-template <typename elemT> elemT Stack<elemT>::top() const{
-    assert(!elems.empty());
-    return elems.back(); // return last element
-}
-
-template <typename elemT> bool Stack<elemT>::empty() const {
-    return elems.empty(); // check if elems is empty
-}
-
-
-template <typename T, size_t SZ> size_t Array<T,SZ>::size() const {
-    return SZ;
-}
-
-template <typename T, size_t SZ> T &Array<T,SZ>::operator[] (size_t idx){
-    return elems[idx];
-}
-
-template <typename T, size_t SZ> const T &Array<T,SZ>::operator[] (size_t idx) const{
-    return elems[idx];
-}
-
-template <typename T, size_t SZ> T *Array<T,SZ>::begin(){
-    return &elems[0];
-}
-
-template <typename T, size_t SZ> T *Array<T,SZ>::end(){
-    return &elems[0] + SZ;
-}
-
-template <typename T, typename... Types> void Packs(T firstArg, Types... args){
-    cmtemp::display(std::to_string(firstArg)+", ");
-    Packs(args...);
-}
-
-template <typename T, typename... Types> void Pack(T firstArg, Types... args){
-    if (sizeof...(args) > 0) { // if runtime if: args is not empty
-        Pack(args...);
-    }
-
-}
-
-template <typename T,typename... Types> void get_type_id(T firstArg, Types... args){
-    std::string tn = typeid(T).name();
-    cmtemp::display_template_one(tn);
-    if constexpr(sizeof...(args) > 0) { // compile time if
-        get_type_id(args...);
-    }
 }
 
 template <typename Coll, typename T> void add(Coll &coll, const T &val){

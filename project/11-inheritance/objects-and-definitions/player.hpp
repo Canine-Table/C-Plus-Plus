@@ -1,16 +1,14 @@
 #include "people.hpp"
 
-#ifndef PLAYER_CPP
-#define PLAYER_CPP
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
 
-//class People; // Forward declaration
-
-class Player : public People {
+class Player : public People<u_int16_t,u_int8_t>  {
 
     std::string m_team {"None"};
     std::string m_game {"None"};
 
-    // friend std::ostream& operator<<(std::ostream& out, const Player& Player);
+    friend std::ostream& operator<<(std::ostream& out, const Player& Player);
 
     public:
         Player() = default;
@@ -26,4 +24,4 @@ class Player : public People {
 };
 
 
-#endif // PLAYER_CPP
+#endif

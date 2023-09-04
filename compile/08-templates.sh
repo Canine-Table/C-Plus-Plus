@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function 08_function_templates(){
+function 08_templates(){
     source "${FILE_PATHS[workspaceFolder]}/compile/utils.sh";
     declare -gar compile_file_args=(
         "${LINKER_FILES[commonOutputUtils]}"

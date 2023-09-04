@@ -18,7 +18,6 @@ function choose_files_to_compile(){
         ["wrapper"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/wrapper.cpp")
         ["point"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/point.cpp")
         ["cylinder"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/10-classes/03-modular/cylinder.cpp")
-        ["people"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/11-inheritance/objects-and-definitions/people.cpp")
         ["player"]=$(echo "${FILE_PATHS[workspaceFolder]}/project/11-inheritance/objects-and-definitions/player.cpp")
     );
 
@@ -26,9 +25,9 @@ function choose_files_to_compile(){
         "07-functions")
             source "${FILE_PATHS[workspaceFolder]}/compile/07-functions.sh"
             07_functions;;
-        "08-function-templates")
-            source "${FILE_PATHS[workspaceFolder]}/compile/08-function-templates.sh"
-            08_function_templates;;
+        "08-templates")
+            source "${FILE_PATHS[workspaceFolder]}/compile/08-templates.sh"
+            08_templates;;
         "10-classes")
             source "${FILE_PATHS[workspaceFolder]}/compile/10-classes.sh"
             10_classes;;
@@ -56,7 +55,7 @@ function main(){
     );
 
     choose_files_to_compile "${FILE_PATHS[@]}";
-    /usr/bin/g++ -fdiagnostics-color=always -g -std=c++23 "${FILE_PATHS[file]}" "${compile_file_args[@]}" -o "${FILE_PATHS[buildPath]}";
+    /usr/bin/g++ -fdiagnostics-color=always -fconcepts-diagnostics-depth=2 -g -std=c++23 "${FILE_PATHS[file]}" "${compile_file_args[@]}" -o "${FILE_PATHS[buildPath]}";
     exit 0;
 }
 
