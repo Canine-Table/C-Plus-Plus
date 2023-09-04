@@ -56,8 +56,13 @@ function main(){
 
     choose_files_to_compile "${FILE_PATHS[@]}";
     /usr/bin/g++ -fdiagnostics-color=always -fconcepts-diagnostics-depth=2 -g -std=c++23 "${FILE_PATHS[file]}" "${compile_file_args[@]}" -o "${FILE_PATHS[buildPath]}";
-    exit 0;
-}
 
+    if [[ $? == 0 ]]; then
+        source "${FILE_PATHS[workspaceFolder]}/compile/utils.sh"
+        confirmation ${FILE_PATHS[buildPath]} "Would you like the run the binary? (Y)es or (N)o";
+        exit 0;
+    fi
+    exit 1;
+}
 
 main "$@";

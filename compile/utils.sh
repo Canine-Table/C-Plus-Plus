@@ -28,6 +28,7 @@ function divider(){
 
 
 function margin(){
+    local -r message="$1";
     local -A count=(
         ["top"]=${2:-1}
         ["bottom"]=${3:-1}
@@ -50,7 +51,39 @@ function margin(){
         done
     fi
 
-    echo -e "${margin[top]}${1}${margin[bottom]}";
+    echo -e "${margin[top]}${message}${margin[bottom]}";
 
+    return 0;
+}
+
+
+function check_permission(){
+    local -i default="${2:-1}";
+    if [[ "$2" == "true" ]]; then
+        default=0;
+    fi
+    local -ur RUN="$1"
+    case "$RUN" in
+        'YES'|'Y'|'ALLOW'|'CONFIRM')
+            echo 0;;
+        'NO'|'N'|'DENY')
+            echo 1;;
+        *)
+            echo $default;;
+    esac
+    return 0;
+}
+
+
+function confirmation(){
+    local -r command_path="$1";
+    local -r message="${@:2}";
+    margin "" 5;
+    tput cup $(($(tput lines)-5))
+    read -p " ${message}: " RUN;
+    if [[ $(check_permission "$RUN") == 0 ]]; then
+        "$command_path";
+    fi
+    margin "" 3;
     return 0;
 }
